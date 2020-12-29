@@ -1,18 +1,26 @@
 body {
-    background-color: #556052;
-    color: #cbbcb1;
-    font-family: 'Hind', sans-serif;
+  background-color: white;
+  color: #546e7a;
+  font-family: 'Jost', sans-serif;
 }
-header {
+#heroIMG {   
+  display: block;
+  margin: 0 auto;  
+  position: center;
+  background-size: cover;
+}
 
-}
-/* Text alignment */
-.center-align{
-    text-align: center;
-}
-.left-align{
-    text-align: left;
-}
-.right-align{
-    text-align: right;
-}
+#footer { 
+   
+  padding: 10px 10px 0px 10px; 
+  bottom: 0; 
+  width: 100%; 
+  /* Height of the footer*/  
+  height: 40px;
+}  
+select{
+  margin:40px;
+  background: rgba(0,0,0,0.3);
+  color:#fff;
+  text-shadow:0 1px 0 rgba(0,0,0,0.4);
+  }
