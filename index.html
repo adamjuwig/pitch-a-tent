@@ -1,124 +1,355 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bootstrap Example</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <title>Document</title>
-  </head>
-  <body>
-    <div class="container">
-        <h2>What State would you like to camp in?</h2>
-        <p></p>
-        <!-- <p>Use the .dropdown-menu class to actually build the dropdown menu.</p> -->
-        <p></p>                                          
-        <div class="dropdown">
-         <select id="list" onchange="getSelectedValue();">
-             <option disabled hidden selected>Select State</option>
-             <option value="AZ">Arizona</option>
-             <option value="CA">California</option>
-             <option value="WI">Wisconsin</option>
-         </select>
+<html>
+
+<head>
+  <title>Pitch A Tent</title>
+  <meta name="viewport" content="width = device-width, initial-scale = 1">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="Assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="1˜6x16" href="Assets/favicon-16x16.png">
+  <script src="script.js"></script>
+
+</head>
+
+<body>
+  
+  <div class="navbar-fixed">
+    <nav class="white">
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo center blue-grey-text">PITCH A TENT</a>
+      </div>
+    </nav>
+  </div>
+
+  <!-- center green-text text-darken-3 -->
+  <!-- IMAGE -->
+  <div class="wrapper">
+    <img class="materialboxed center-align wrapper" width="700" src="Assets/camp2.jpg" id="heroIMG">
+  </div>
+  <div class="container">
+
+    <!-- Dropdown Menu -->
+    <div class="row">
+      <div class="input-field col l4 offset-l4 hoverable">
+        <div class="row">
+          <div id="searcherOne">
+          <select id="list" onchange="getSelectedValue();">
+            <option value="" disabled selected>Choose A State</option>
+            <option value="AL">AL</option>
+            <option value="AK">AK</option>
+            <option value="AZ">AZ</option>
+            <option value="AR">AR</option>
+            <option value="CA">CA</option>
+            <option value="CO">CO</option>
+            <option value="CT">CT</option>
+            <option value="DE">DE</option>
+            <option value="FL">FL</option>
+            <option value="GA">GA</option>
+            <option value="HI">HI</option>
+            <option value="ID">ID</option>
+            <option value="IL">IL</option>
+            <option value="IN">IN</option>
+            <option value="IA">IA</option>
+            <option value="KS">KS</option>
+            <option value="KY">KY</option>
+            <option value="ME">ME</option>
+            <option value="MD">MD</option>
+            <option value="MA">MA</option>
+            <option value="MI">MI</option>
+            <option value="MN">MN</option>
+            <option value="MS">MS</option>
+            <option value="MO">MO</option>
+            <option value="MT">MT</option>
+            <option value="NE">NE</option>
+            <option value="NV">NV</option>
+            <option value="NJ">NJ</option>
+            <option value="NM">NM</option>
+            <option value="NY">NY</option>
+            <option value="NC">NC</option>
+            <option value="ND">ND</option>
+            <option value="OH">OH</option>
+            <option value="OK">OK</option>
+            <option value="OR">OR</option>
+            <option value="PA">PA</option>
+            <option value="RI">RI</option>
+            <option value="SC">SC</option>
+            <option value="SD">SD</option>
+            <option value="TN">TN</option>
+            <option value="TX">TX</option>
+            <option value="UT">UT</option>
+            <option value="VT">VT</option>
+            <option value="VA">VA</option>
+            <option value="WV">WV</option>
+            <option value="WI">WI</option>
+            <option value="WY">WY</option>
+          </select>
         </div>
       </div>
+    </div>
+
+
+  <div id="searcherTwo">
     <textarea id="result"></textarea>
     <button id="searchState">Search</button>
-
-    <div class="row">
-      <div class="col-md-2">
-          <input type="text" class="form-control" id="weather-input" placeholder="Enter a City" aria-label="Enter a City" aria-describedby="basic-addon2">
-          <div class="input-group-append">
-              <button class="btn btn-primary search" type="submit">Search</button>
-          </div>
-        </div>
-     
   </div>
-    <div class="test"></div>
-    <br />
-    <div id="userChoice"></div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="script.js"> 
-    //  var selection = $("select");
-    //  var result = $("#result");
 
-      //   function getSelectedValue() {
-      //       var selectedValue = $("#list").val();
-      //       result.text(selectedValue);
-      //   };
+  <!-- <div class="test"></div> -->
+  <div id="hidden" class="hide"> 
+    <!-- we can unhide with function. -->
+    <div class="row">
+      <div class="col s12 blue-grey lighten-4 right">
+        <ul class="left"><h4>City:<span id="weatherCity"></span></h4></ul>
+        <ul class="right"><h4>High: Low:</h4></ul>
+      </div>
+    </div>
+  <div class="row">
+    <div class="col s6">
+      <div class="card small blue-grey darken-1">
+        <div class="card-content">
+          <span class="card-title activator white-text text-darken-4 campsiteName campsiteNameOne"><i
+              class="material-icons right"></i></span>
 
-        
-      // $("button").on("click", function () {
-      //   var userText = $("textarea").val();
-      //   var queryUrl =
-      //     "https://developer.nps.gov/api/v1/campgrounds?stateCode=" + userText + "&api_key=PsnhlhXZuoOG7d4tp1e2PSphbmVmzt0nNtN4VgL8";
-      //   $.ajax({
-      //     url: queryUrl,
-      //     method: "GET",
-      //   }).then(function (response) {
-      //     console.log(response);
-      //     console.log(response.data[0].addresses);
-      //     // console.log(response.data[0].addresses[0].stateCode);
-      //     // console.log(response.data[0].addresses[0].postalCode);
+        </div>
+        <div class="card-reveal">
+          <span class="card-title black-text text-darken-4">Additional Information<i
+              class="material-icons right">close</i></span>
+          <p><div class="campsiteDescriptionOne"></div>
+          </p>
+          <p><div class=campsiteOneAddress>Address: </div></p>
+        </div>
+      </div>
+    </div>
 
-      //     // console.log(response.data[1].addresses[1].city);
-      //     // console.log(response.data[1].addresses[1].stateCode);
-      //     // console.log(response.data[1].addresses[1].postalCode);
+  <div class="row">
+    <div class="col s6">
+      <div class="card small blue-grey darken-1">
+        <div class="card-content">
+          <span class="card-title activator white-text text-darken-4 campsiteName campsiteNameTwo"><i
+              class="material-icons right"></i></span>
 
-      //     // console.log(response.data[2].addresses[2].city);
-      //     // console.log(response.data[2].addresses[2].stateCode);
-      //     // console.log(response.data[2].addresses[2].postalCode);
-
-      //     // console.log(response.data[3].addresses[3].city);
-      //     // console.log(response.data[3].addresses[3].stateCode);
-      //     // console.log(response.data[3].addresses[3].postalCode);
-
-      //     // console.log(response.data[4].addresses[4].city);
-      //     // console.log(response.data[4].addresses[4].stateCode);
-      //     // console.log(response.data[4].addresses[4].postalCode);
-
-      //     // console.log(response.data[5].addresses[5].city);
-      //     // console.log(response.data[5].addresses[5].stateCode);
-      //     // console.log(response.data[5].addresses[5].postalCode);
-      //     // campsite name
-      //     console.log(response.data[0].name);
-      //     console.log(response.data[1].name);
-      //     console.log(response.data[2].name);
-      //     console.log(response.data[3].name);
-      //     console.log(response.data[4].name);
-      //     console.log(response.data[5].name);
-
-      //     // description
-      //     console.log(response.data[0].description);
-      //     console.log(response.data[1].description);
-      //     console.log(response.data[2].description);
-      //     console.log(response.data[3].description);
-      //     console.log(response.data[4].description);
-      //     console.log(response.data[5].description);
-      //   // for (let i = 0; i < response.data.length && i < 5; i++) {
-      //   //   var data = response.data[i];
-      //   //     console.log(data.name);
-      //   //   }
-      //   }
-      //   );
-      // });
-
-      // function getWeatherInfo ()  {
-      //   var queryURL = "https://api.openweathermap.org/data/2.5/weather?q="+ city +"&units=imperial&appid=a919f8d6ebff3b8cdcbc03c1604cfc21";
-
-      //   $.ajax({
-      //     url: queryURL,
-      //     method: "GET"
-      //   }).then()
-      // }
-
-
-
+        </div>
+        <div class="card-reveal">
+          <span class="card-title black-text text-darken-4">Additional Information<i
+              class="material-icons right">close</i></span>
+          <p><div class="campsiteDescriptionTwo"></div>
+          </p>
+          <p><div class=campsiteTwoAddress>Address: </div></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s6">
+      <div class="card small blue-grey darken-1">
+        <div class="card-content">
+          <span class="card-title activator white-text text-darken-4 campsiteName campsiteNameThree"><i
+              class="material-icons right">more_vert</i></span>
+            <p class="white-text text-darken-4"></p>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title black-text text-darken-4">Additional Information<i
+              class="material-icons right">close</i></span>
+              <p><div class="campsiteDescriptionThree"></div></p>
+              <p><div class=campsiteThreeAddress>Address: </div></p>
+        </div>
+      </div>
+    </div>
+​
+    <div class="col s6">
+      <div class="card small blue-grey darken-1">
+        <div class="card-content">
+          <span class="card-title activator white-text text-darken-4 campsiteName campsiteNameFour"><i
+              class="material-icons right">more_vert</i></span>              
+        </div>
+        <div class="card-reveal">
+          <span class="card-title black-text text-darken-4">Additional Information<i
+              class="material-icons right">close</i></span>
+              <p><div class="campsiteDescriptionFour"></div></p>
+              <p><div class=campsiteFourAddress>Address: </div></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+​
+  <div class="row">
+    <div class="col s12 blue-grey lighten-4 right">
       
-    </script>
-  </body>
+    </div>
+  </div>
+​
+
+<br>
+<br>
+<br>
+<br>
+
+  <!-- Footer -->
+  <footer class="section center blue-grey lighten-4 z-depth-4" id="footer">
+    Created by: Josh Arroyo, Andrew Gabbard & Adam Juwig &copy; 2020
+  </footer>
+
+  <!-- Javascript -->
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js">
+  </script>
+ 
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
+  </script>
+ 
+ <script>
+    $(document).ready(function () {
+      $('select').material_select();
+    });
+    
+    document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.dropdown-trigger');
+    // var instances = M.Dropdown.init(elems, options);
+  });
+
+var selection = $("select");
+var result = $("#result");
+
+function getSelectedValue() {
+    var selectedValue = $("#list").val();
+    result.text(selectedValue);
+};
+
+
+function myFunction() {
+              var element = document.getElementById("hidden");
+              element.classList.remove("hide");
+              var elementOne = document.getElementById("searcherOne");
+              elementOne.classList.add("hide"); 
+              var elementTwo = document.getElementById("searcherTwo");
+              elementTwo.classList.add("hide");
+            }
+
+
+$("#searchState").on("click", function () {
+    var userText = $("textarea").val();
+    var queryUrl =
+        "https://developer.nps.gov/api/v1/campgrounds?stateCode=" + userText + "&api_key=PsnhlhXZuoOG7d4tp1e2PSphbmVmzt0nNtN4VgL8";
+    $.ajax({
+        url: queryUrl,
+        method: "GET",
+    }).then(function (response) {
+        myFunction();
+        for (let i = 0; i < response.data.length && i < 5; i++) {
+            var campsite = response.data[i];
+            campsite01 = response.data[0]
+            campsite01Name = response.data[0].name
+            console.log("Hey I am 01 Name: ", campsite01Name)
+            campsite02Name = response.data[1].name
+            console.log("Hey I am 02 Name: ", campsite02Name)
+            campsite03Name = response.data[2].name
+            console.log("Hey I am 03 Name: ", campsite03Name)
+            campsite04Name = response.data[3].name
+            console.log("Hey I am 04 Name: ", campsite04Name)
+            campsite01Description = response.data[0].description
+            console.log("Hey I am number one description: ", campsite01Description)
+            campsite02Description = response.data[1].description
+            console.log("Hey I am number two description: ", campsite02Description)
+            campsite03Description = response.data[2].description
+            console.log("Hey I am number three description: ", campsite03Description)
+            campsite04Description = response.data[3].description
+            console.log("Hey I am number four description: ", campsite04Description)
+  
+
+            var campsite01AddressLineOne = response.data[0].addresses[0].line1
+            var campsite02AddressLineOne = response.data[1].addresses[0].line1
+            // var campsite03AddressLineOne = response.data[2].addresses[0].line1
+
+            console.log("Hey I am number one ADDRESS LINE ONE", campsite01AddressLineOne)
+
+
+            // campsite02 = response.data[1]
+            // campsite03 = response.data[2]
+            // campsite04 = response.data[3]
+            var nameEl = $("<div>");
+            var descriptionEL = $("<div>");
+            descriptionEL.text(campsite.description);
+            var address = campsite.addresses;
+            var newDiv = $("<div>");
+            var campsiteName = $("<div>");
+            campsiteName.text(campsite.name);
+            var campAddress = $("<div>");
+            newDiv.append(campsiteName);
+            newDiv.append(campAddress);
+            newDiv.append(descriptionEL);
+            // $(".test").append(newDiv);
+            // $(".campsiteNameOne").append(campsite01Name);
+            // $(".campsiteNameTwo").append(campsite02Name);
+            // $(".campsiteNameThree").append(campsite03Name);
+            // $(".campsiteNameFour").append(campsite04Name);
+
+            $(".campsiteDescription").append(campsite.description)
+            if (address && address.length > 0) {
+                console.log(address[0].city);
+                console.log(address[0].stateCode);
+                console.log(address[0].postalCode);
+                campAddress.text(address[0].city);
+                // $(".test").text(address[0].city);
+
+            } else {
+                campAddress.text("Sorry! No Address Data Available");
+            }
+   
+        }
+
+        $(".campsiteNameOne").append(campsite01Name);
+        $(".campsiteNameTwo").append(campsite02Name);
+        $(".campsiteNameThree").append(campsite03Name);
+        $(".campsiteNameFour").append(campsite04Name);
+        $(".campsiteDescriptionOne").append(campsite01Description)
+        $(".campsiteDescriptionTwo").append(campsite02Description)
+        $(".campsiteDescriptionThree").append(campsite03Description)
+        $(".campsiteDescriptionFour").append(campsite04Description)
+        $(".campsiteOneAddress").append(campsite01AddressLineOne)
+        $(".campsiteTwoAddress").append(campsite02AddressLineOne)
+        $(".campsiteThreeAddress").append(campsite01AddressLineOne)
+        $(".weatherCity").append(campsite01Name)
+        // $(".campsiteTwoAddress").append(campsite01AddressLineOne)
+        // $(".campsiteThreeAddress").append(campsite03AddressLineOne)
+        // $(".campsiteFourAddress").append(campsite04AddressLineOne)
+        
+        console.log(response);
+        // campsite name
+        //  console.log(response.data[0].name);
+        //  console.log(response.data[1].name);
+        //  console.log(response.data[2].name);
+        //  console.log(response.data[3].name);
+        //  console.log(response.data[4].name);
+        //  console.log(response.data[5].name);
+
+        // description
+        //  console.log(response.data[0].description);
+        //  console.log(response.data[1].description);
+        //  console.log(response.data[2].description);
+        //  console.log(response.data[3].description);
+        //  console.log(response.data[4].description);
+        //  console.log(response.data[5].description);
+        // for (let i = 0; i < response.data.length && i < 5; i++) {
+        //   var data = response.data[i];
+        //     console.log(data.name);
+        //   }
+    }
+    );
+});
+
+
+
+// console.log(selection)
+
+
+  </script>
+
+</body>
+
 </html>
