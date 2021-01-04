@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+​
+<head>
+  <title>Pitch A Tent</title>
+  <meta name="viewport" content="width = device-width, initial-scale = 1">
+​
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+​
+​
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="Assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="Assets/favicon-16x16.png">
+</head>
+​
+<body>
+​
+<!-- HEADER/TOP OF PAGE -->
+  <div class="navbar-fixed">
+    <nav class="white">
+      <div class="nav-wrapper">
+        <a href="#top" class="brand-logo center blue-grey-text">PITCH A TENT<br>
+​
+        </a>
+​
+      </div>
+    </nav>
+  </div>
+​
+<!-- IMAGE -->
+​
+  <div class="container">
+​
+    <img class="materialboxed center-align responsive-img" src="Assets/camp2.jpg">
+​
+  </div>
+  <!-- MAIN CONTAINER -->
+  <div class="container">
+  <!-- DROPDOWN MENU -->
+  <div class="row">
+    <div class="input-field col l4 offset-l4 hoverable">
+      <div class="row">
+
+        <select id="list" onchange="getSelectedValue();">
+          <div id="searcherOne">
+          <option value="" disabled selected>Choose A State</option>
+          <option value="AL">AL</option>
+          <option value="AK">AK</option>
+          <option value="AZ">AZ</option>
+          <option value="AR">AR</option>
+          <option value="CA">CA</option>
+          <option value="CO">CO</option>
+          <!-- <option value="CT">CT</option> -->
+          <!-- <option value="DE">DE</option> -->
+          <option value="FL">FL</option>
+          <option value="GA">GA</option>
+          <option value="HI">HI</option>
+          <option value="ID">ID</option>
+          <!-- <option value="IL">IL</option> -->
+          <!-- <option value="IN">IN</option> -->
+          <!-- <option value="IA">IA</option> -->
+          <!-- <option value="KS">KS</option> -->
+          <option value="KY">KY</option>
+          <!-- <option value="ME">ME</option> -->
+          <option value="MD">MD</option>
+          <option value="MA">MA</option>
+          <option value="MI">MI</option>
+          <!-- <option value="MN">MN</option> SOME STATES COMMENTED OUT BECAUSE OF API (SOME STATES RETURN 0 CAMPSITES)-->
+          <option value="MS">MS</option>
+          <option value="MO">MO</option>
+          <option value="MT">MT</option>
+          <!-- <option value="NE">NE</option> -->
+          <option value="NV">NV</option>
+          <option value="NJ">NJ</option>
+          <option value="NM">NM</option>
+          <option value="NY">NY</option>
+          <option value="NC">NC</option>
+          <option value="ND">ND</option>
+          <!-- <option value="OH">OH</option> -->
+          <option value="OK">OK</option>
+          <option value="OR">OR</option>
+          <option value="PA">PA</option>
+          <!-- <option value="RI">RI</option> -->
+          <option value="SC">SC</option>
+          <option value="SD">SD</option>
+          <option value="TN">TN</option>
+          <option value="TX">TX</option>
+          <option value="UT">UT</option>
+          <!-- <option value="VT">VT</option> -->
+          <option value="VA">VA</option>
+          <option value="WV">WV</option>
+          <!-- <option value="WI">WI</option> -->
+          <option value="WY">WY</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div id="searcherTwo">
+    <textarea id="result" class="hide"></textarea>
+    <!-- <button id="searchState">Search</button> -->
+    <button id="searchState" class="btn blue-grey darken-1 center" type="submit" name="action">Find Campsites!
+      <i class="material-icons right">send</i>
+    </button>
+  </div>
+  <!-- Results -->
+  <div id="hidden" class="hide"> 
+  <!-- CITY STATE WEATHER INFO -->
+    <div class="row">
+      <div class="col s12 blue-grey lighten-4 right z-depth-1">
+        <ul class="center">
+          <h4>Temperature Across the State</h4>
+          <div class="city cityHigh"></div>
+          <!-- <div class="city currentCity"></div> -->
+          <!-- <div class="city cityTwoHigh">City Two:</div>
+          <div class="city cityThreeHigh">City Three: </div> -->
+        </ul>
+        <ul class="right">
+          <!-- <h4>High: Low:</h4> -->
+        </ul>
+      </div>
+    </div>
+​
+  <!-- FIRST ROW -->
+    <div class="row">
+  <!-- FIRST CARD -->
+      <div class="col s6">
+        <div class="card small blue-grey darken-1">
+          <div class="card-content">
+            <span class="card-title activator white-text text-darken-4 campsiteNameOne" id="campOne"><i
+                class="material-icons right">more_vert</i></span>
+            <div class="card-action" id="favOne">
+              <a href="#myFavorites" class="white-text text-darken-4">Add to Favorites<i
+                  class="material-icons right saveFavorite">favorite_border</i> </a>
+            </div>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title black-text text-darken-4">Additional Information<i
+                class="material-icons right">close</i></span>
+            <p><div class="campsiteDescriptionOne"></div></p>
+            <p><div class="campsiteOneAddress"></div></p>
+          </div>
+        </div>
+      </div>
+  <!-- SECOND CARD -->
+      <div class="col s6">
+        <div class="card small blue-grey darken-1">
+          <div class="card-content">
+            <span class="card-title activator white-text text-darken-4 campsiteNameTwo" id="campTwo"><i
+                class="material-icons right">more_vert</i></span>
+            <div class="card-action" id="favTwo">
+              <a href="#myFavorites" class="white-text text-darken-4">Add to Favorites<i
+                  class="material-icons right saveFavorite">favorite_border</i> </a>
+            </div>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title black-text text-darken-4">Additional Information<i
+                class="material-icons right">close</i></span>
+            <p><div class="campsiteDescriptionTwo"></div></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- SECOND ROW -->
+    <div class="row">  
+  <!-- THIRD CARD -->
+      <div class="col s6">
+        <div class="card small blue-grey darken-1">
+          <div class="card-content">
+            <span class="card-title activator white-text text-darken-4 campsiteNameThree" id="campThree"><i
+                class="material-icons right">more_vert</i></span>
+            <div class="card-action" id="favThree">
+              <a href="#myFavorites" class="white-text text-darken-4">Add to Favorites<i
+                  class="material-icons right saveFavorite">favorite_border</i> </a>
+            </div>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title black-text text-darken-4">Additional Information<i
+                class="material-icons right">close</i></span>
+            <p><div class="campsiteDescriptionThree"></div></p>
+          </div>
+        </div>
+      </div>
+  <!-- FOURTH CARD -->
+      <div class="col s6 m6">
+        <div class="card small blue-grey darken-1">
+          <div class="card-content">
+            <span class="card-title activator white-text text-darken-4 campsiteNameFour" id="campFour"><i
+                class="material-icons right">more_vert</i></span>
+            <div class="card-action" id="favFour">
+              <a href="#myFavorites" class="white-text text-darken-4">Add to Favorites<i
+                  class="material-icons right saveFavorite">favorite_border</i> </a>
+            </div>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title black-text text-darken-4">Additional Information<i
+                class="material-icons right">close</i></span>
+            <p><div class="campsiteDescriptionFour"></div></p>
+          </div>
+        </div>
+      </div>
+    </div>
+​
+  <!-- FAVORITES -->
+​
+    <ul class="collapsible" id="myFavorites">
+      <li>
+        <div class="collapsible-header" id="favBtn"><i class="material-icons">favorites</i>Favorites</div>
+​
+        <div class="collapsible-body">
+        </div>
+      </li>
+    </ul>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+  </div>
+​
+  <!-- FOOTER -->
+  <footer class="section center blue-grey lighten-4 z-depth-4" id="footer">
+    Created by: Josh Arroyo, Andrew Gabbard & Adam Juwig &copy; 2020
+  </footer>
+​
+  <!-- JAVASCRIPT -->
+​
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
+  </script>
+  <script>
+  
+  $(document).ready(function () { 
+    $('.slider').slider();
+  }); 
+  
+  $(document).ready(function () {
+    $('select').material_select();
+  });
+  
+  $('.saveFavorite').click(function() {
+    $(".saveFavorite").html('<i class="material-icons">favorite</i>');
+  });
+  
+  </script>
+​<script type="text/javascript" src="script.js">
+</script>
+</body>
+​
