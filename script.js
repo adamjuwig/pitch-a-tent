@@ -138,7 +138,8 @@ function getWeatherInfo() {
         console.log(sunset);
        
         var cityHigh = response.main.temp_max;
-        var currentCity = response;
+        var cityLow = response.main.temp_min
+        var currentCity = response.name;
         names.push(currentCity);
         // console.log(response.name);
        
@@ -147,8 +148,9 @@ function getWeatherInfo() {
         console.log(response.weather[0].description);
         console.log("Id of result: ", selectedValue)
         
-        $(".cityOneHigh").append(cityHigh)
-        $(".currentCity").append(currentCity);
+        $(".cityHigh").append(currentCity + ": " + cityHigh.toFixed(0) + " " + "/" + " " + cityLow.toFixed(0) + " F " + "\n" + "<br>")
+        
+        // $(".currentCity").append(currentCity);
         // $(".cityTwoHigh").append(cityOneMainTemp)
         // $(".cityThreeHigh").append(cityOneMainTemp)
     })
@@ -389,4 +391,3 @@ favBtn.on("click", function() {
 // console.log(campOneName);
 // localStorage.setItem("name", "hey");
 // });
-
