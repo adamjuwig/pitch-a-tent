@@ -1,5 +1,6 @@
 var selection = $("select");
 var result = $("#result");
+var names = [];
 
 function getSelectedValue() {
     var selectedValue = $("#list").val();
@@ -9,7 +10,7 @@ function getSelectedValue() {
 function myFunction() {
     var element = document.getElementById("hidden");
     element.classList.remove("hide");
-    // var elementOne = document.getElementById("searcherOne");
+    var elementOne = document.getElementById("searcherOne");
     // elementOne.classList.add("hide");  WHY DO I HAVE TO HIDE THIS FOR IT TO WORK. Searche
     var elementTwo = document.getElementById("searcherTwo");
     elementTwo.classList.add("hide");
@@ -114,13 +115,13 @@ function getWeatherInfo() {
     }if ((selectedValue === "WY")) {
         city = ["Cheyenne", "Casper", "Laramie"];
     }
-
+    
     for (let i = 0; i < city.length; i++) {
         
         cities = city[i];
     
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cities + "&units=imperial&appid=a919f8d6ebff3b8cdcbc03c1604cfc21";
-
+    
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -136,19 +137,28 @@ function getWeatherInfo() {
         console.log(Sunrise);
         console.log(sunset);
        
-        var cityHigh = response.main.temp_max
+        var cityHigh = response.main.temp_max;
+        var cityLow = response.main.temp_min
+        var currentCity = response.name;
+        names.push(currentCity);
+        // console.log(response.name);
        
         console.log(response.main.temp_max);
         console.log("Hey I should print the same number as above: ", cityHigh)
         console.log(response.weather[0].description);
         console.log("Id of result: ", selectedValue)
         
-        $(".cityOneHigh").append(cityHigh)
+        $(".cityHigh").append(currentCity + ": " + cityHigh.toFixed(0) + " " + "/" + " " + cityLow.toFixed(0) + " F " + "\n" + "<br>")
+        
+        // $(".currentCity").append(currentCity);
         // $(".cityTwoHigh").append(cityOneMainTemp)
         // $(".cityThreeHigh").append(cityOneMainTemp)
     })
 }
+console.log(names[0]);
 };
+
+
 
 $("#searchState").on("click", function () {
     var userText = $("textarea").val();
@@ -270,7 +280,114 @@ $("#searchState").on("click", function () {
         //   var data = response.data[i];
         //     console.log(data.name);
         //   }
+        var favOne = $("#favOne");
+        var favTwo = $("#favTwo");
+        var favThree = $("#favThree");
+        var favFour = $("#favFour");
+
+favOne.on("click", function() {
+    if (localStorage.getItem("name") === null) {
+        localStorage.setItem("name", campsite01Name);
+    }else if (localStorage.getItem("name") != null && localStorage.getItem("name2") === null ) {
+        localStorage.setItem("name2", campsite01Name);
+    }else if (localStorage.getItem("name2") != null && localStorage.getItem("name3") === null) {
+        localStorage.setItem("name3", campsite01Name);
+    } else if (localStorage.getItem("name3") != null) {
+        localStorage.setItem("name4", campsite01Name);
+    };
+
+});
+
+favTwo.on("click", function() {
+    if (localStorage.getItem("name") === null) {
+        localStorage.setItem("name", campsite02Name);
+    }else if (localStorage.getItem("name") != null && localStorage.getItem("name2") === null ) {
+        localStorage.setItem("name2", campsite02Name);
+    }else if (localStorage.getItem("name2") != null && localStorage.getItem("name3") === null) {
+        localStorage.setItem("name3", campsite02Name);
+    } else if (localStorage.getItem("name3") != null) {
+        localStorage.setItem("name4", campsite02Name);
+    };
+
+});
+
+favThree.on("click", function() {
+    if (localStorage.getItem("name") === null) {
+        localStorage.setItem("name", campsite03Name);
+    }else if (localStorage.getItem("name") != null && localStorage.getItem("name2") === null ) {
+        localStorage.setItem("name2", campsite03Name);
+    }else if (localStorage.getItem("name2") != null && localStorage.getItem("name3") === null) {
+        localStorage.setItem("name3", campsite03Name);
+    } else if (localStorage.getItem("name3") != null) {
+        localStorage.setItem("name4", campsite04Name);
+    };
+
+});
+
+favFour.on("click", function() {
+    if (localStorage.getItem("name") === null) {
+        localStorage.setItem("name", campsite04Name);
+    }else if (localStorage.getItem("name") != null && localStorage.getItem("name2") === null ) {
+        localStorage.setItem("name2", campsite04Name);
+    }else if (localStorage.getItem("name2") != null && localStorage.getItem("name3") === null) {
+        localStorage.setItem("name3", campsite04Name);
+    } else if (localStorage.getItem("name3") != null) {
+        localStorage.setItem("name4", campsite04Name);
+    };
+
+});
+
+
+var favBtn = $("#favBtn");
+favBtn.on("click", function() {
+    if (localStorage.getItem("name") === null) {
+        return;
+    } else if(localStorage.getItem("name") != null && localStorage.getItem("name2") === null) {
+        console.log("hey");
+        var campOneName = $("#campOne");
+            campOneName.empty();
+            campOneName.text(localStorage.getItem("name"));
+    } else if (localStorage.getItem("name2") != null && localStorage.getItem("name3") === null) {
+        var campOneName = $("#campOne");
+            campOneName.empty();
+            campOneName.text(localStorage.getItem("name"));
+        var campTwoName = $("#campTwo");
+            campTwoName.empty();
+            campTwoName.text(localStorage.getItem("name2"));
+    } else if (localStorage.getItem("name3") != null && localStorage.getItem("name4") === null) {
+        var campOneName = $("#campOne");
+            campOneName.empty();
+            campOneName.text(localStorage.getItem("name"));
+        var campTwoName = $("#campTwo");
+            campTwoName.empty();
+            campTwoName.text(localStorage.getItem("name2"));
+        var campThreeName = $("#campThree");
+            campThreeName.empty();
+            campThreeName.text(localStorage.getItem("name3"));
+    }else if (localStorage.getItem("name4") != null) {
+        var campOneName = $("#campOne");
+            campOneName.empty();
+            campOneName.text(localStorage.getItem("name"));
+        var campTwoName = $("#campTwo");
+            campTwoName.empty();
+            campTwoName.text(localStorage.getItem("name2"));
+        var campThreeName = $("#campThree");
+            campThreeName.empty();
+            campThreeName.text(localStorage.getItem("name3"));
+        var campFourName = $("#campFour");
+            campFourName.empty();
+            campFourName.text(localStorage.getItem("name4"));
+    };
+
+});
     }
     );
 });
 
+// var favOne = $("#favOne");
+
+// favOne.on("click", function() {
+//     var campOneName = $("#campOne").val();
+// console.log(campOneName);
+// localStorage.setItem("name", "hey");
+// });
