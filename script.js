@@ -9,7 +9,7 @@ function getSelectedValue() {
 function myFunction() {
     var element = document.getElementById("hidden");
     element.classList.remove("hide");
-    var elementOne = document.getElementById("searcherOne");
+    // var elementOne = document.getElementById("searcherOne");
     // elementOne.classList.add("hide");  WHY DO I HAVE TO HIDE THIS FOR IT TO WORK. Searche
     var elementTwo = document.getElementById("searcherTwo");
     elementTwo.classList.add("hide");
@@ -149,8 +149,6 @@ function getWeatherInfo() {
     })
 }
 };
-
-
 
 $("#searchState").on("click", function () {
     var userText = $("textarea").val();
