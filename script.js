@@ -1,5 +1,6 @@
 var selection = $("select");
 var result = $("#result");
+var names = [];
 
 function getSelectedValue() {
     var selectedValue = $("#list").val();
@@ -114,13 +115,13 @@ function getWeatherInfo() {
     }if ((selectedValue === "WY")) {
         city = ["Cheyenne", "Casper", "Laramie"];
     }
-
+    
     for (let i = 0; i < city.length; i++) {
         
         cities = city[i];
     
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cities + "&units=imperial&appid=a919f8d6ebff3b8cdcbc03c1604cfc21";
-
+    
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -136,7 +137,10 @@ function getWeatherInfo() {
         console.log(Sunrise);
         console.log(sunset);
        
-        var cityHigh = response.main.temp_max
+        var cityHigh = response.main.temp_max;
+        var currentCity = response;
+        names.push(currentCity);
+        // console.log(response.name);
        
         console.log(response.main.temp_max);
         console.log("Hey I should print the same number as above: ", cityHigh)
@@ -144,10 +148,12 @@ function getWeatherInfo() {
         console.log("Id of result: ", selectedValue)
         
         $(".cityOneHigh").append(cityHigh)
+        $(".currentCity").append(currentCity);
         // $(".cityTwoHigh").append(cityOneMainTemp)
         // $(".cityThreeHigh").append(cityOneMainTemp)
     })
 }
+console.log(names[0]);
 };
 
 
