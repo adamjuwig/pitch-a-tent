@@ -272,7 +272,115 @@ $("#searchState").on("click", function () {
         //   var data = response.data[i];
         //     console.log(data.name);
         //   }
+        var favOne = $("#favOne");
+        var favTwo = $("#favTwo");
+        var favThree = $("#favThree");
+        var favFour = $("#favFour");
+
+favOne.on("click", function() {
+    if (localStorage.getItem("name") === null) {
+        localStorage.setItem("name", campsite01Name);
+    }else if (localStorage.getItem("name") != null && localStorage.getItem("name2") === null ) {
+        localStorage.setItem("name2", campsite01Name);
+    }else if (localStorage.getItem("name2") != null && localStorage.getItem("name3") === null) {
+        localStorage.setItem("name3", campsite01Name);
+    } else if (localStorage.getItem("name3") != null) {
+        localStorage.setItem("name4", campsite01Name);
+    };
+
+});
+
+favTwo.on("click", function() {
+    if (localStorage.getItem("name") === null) {
+        localStorage.setItem("name", campsite02Name);
+    }else if (localStorage.getItem("name") != null && localStorage.getItem("name2") === null ) {
+        localStorage.setItem("name2", campsite02Name);
+    }else if (localStorage.getItem("name2") != null && localStorage.getItem("name3") === null) {
+        localStorage.setItem("name3", campsite02Name);
+    } else if (localStorage.getItem("name3") != null) {
+        localStorage.setItem("name4", campsite02Name);
+    };
+
+});
+
+favThree.on("click", function() {
+    if (localStorage.getItem("name") === null) {
+        localStorage.setItem("name", campsite03Name);
+    }else if (localStorage.getItem("name") != null && localStorage.getItem("name2") === null ) {
+        localStorage.setItem("name2", campsite03Name);
+    }else if (localStorage.getItem("name2") != null && localStorage.getItem("name3") === null) {
+        localStorage.setItem("name3", campsite03Name);
+    } else if (localStorage.getItem("name3") != null) {
+        localStorage.setItem("name4", campsite04Name);
+    };
+
+});
+
+favFour.on("click", function() {
+    if (localStorage.getItem("name") === null) {
+        localStorage.setItem("name", campsite04Name);
+    }else if (localStorage.getItem("name") != null && localStorage.getItem("name2") === null ) {
+        localStorage.setItem("name2", campsite04Name);
+    }else if (localStorage.getItem("name2") != null && localStorage.getItem("name3") === null) {
+        localStorage.setItem("name3", campsite04Name);
+    } else if (localStorage.getItem("name3") != null) {
+        localStorage.setItem("name4", campsite04Name);
+    };
+
+});
+
+
+var favBtn = $("#favBtn");
+favBtn.on("click", function() {
+    if (localStorage.getItem("name") === null) {
+        return;
+    } else if(localStorage.getItem("name") != null && localStorage.getItem("name2") === null) {
+        console.log("hey");
+        var campOneName = $("#campOne");
+            campOneName.empty();
+            campOneName.text(localStorage.getItem("name"));
+    } else if (localStorage.getItem("name2") != null && localStorage.getItem("name3") === null) {
+        var campOneName = $("#campOne");
+            campOneName.empty();
+            campOneName.text(localStorage.getItem("name"));
+        var campTwoName = $("#campTwo");
+            campTwoName.empty();
+            campTwoName.text(localStorage.getItem("name2"));
+    } else if (localStorage.getItem("name3") != null && localStorage.getItem("name4") === null) {
+        var campOneName = $("#campOne");
+            campOneName.empty();
+            campOneName.text(localStorage.getItem("name"));
+        var campTwoName = $("#campTwo");
+            campTwoName.empty();
+            campTwoName.text(localStorage.getItem("name2"));
+        var campThreeName = $("#campThree");
+            campThreeName.empty();
+            campThreeName.text(localStorage.getItem("name3"));
+    }else if (localStorage.getItem("name4") != null) {
+        var campOneName = $("#campOne");
+            campOneName.empty();
+            campOneName.text(localStorage.getItem("name"));
+        var campTwoName = $("#campTwo");
+            campTwoName.empty();
+            campTwoName.text(localStorage.getItem("name2"));
+        var campThreeName = $("#campThree");
+            campThreeName.empty();
+            campThreeName.text(localStorage.getItem("name3"));
+        var campFourName = $("#campFour");
+            campFourName.empty();
+            campFourName.text(localStorage.getItem("name4"));
+    };
+
+});
     }
     );
 });
+
+// var favOne = $("#favOne");
+
+// favOne.on("click", function() {
+//     var campOneName = $("#campOne").val();
+// console.log(campOneName);
+// localStorage.setItem("name", "hey");
+// });
 
