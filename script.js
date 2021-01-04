@@ -138,8 +138,12 @@ function getWeatherInfo() {
         console.log(sunset);
        
         var cityHigh = response.main.temp_max;
+<<<<<<< HEAD
         var cityLow = response.main.temp_min
         var currentCity = response.name;
+=======
+        var currentCity = response;
+>>>>>>> 20de75ad3062661e63c6d94b6a299ac9bb43f6c5
         names.push(currentCity);
         // console.log(response.name);
        
@@ -148,9 +152,14 @@ function getWeatherInfo() {
         console.log(response.weather[0].description);
         console.log("Id of result: ", selectedValue)
         
+<<<<<<< HEAD
         $(".cityHigh").append(currentCity + ": " + cityHigh.toFixed(0) + " " + "/" + " " + cityLow.toFixed(0) + " F " + "\n" + "<br>")
         
         // $(".currentCity").append(currentCity);
+=======
+        $(".cityOneHigh").append(cityHigh)
+        $(".currentCity").append(currentCity);
+>>>>>>> 20de75ad3062661e63c6d94b6a299ac9bb43f6c5
         // $(".cityTwoHigh").append(cityOneMainTemp)
         // $(".cityThreeHigh").append(cityOneMainTemp)
     })
@@ -390,4 +399,9 @@ favBtn.on("click", function() {
 //     var campOneName = $("#campOne").val();
 // console.log(campOneName);
 // localStorage.setItem("name", "hey");
+<<<<<<< HEAD
 // });
+=======
+// });
+
+>>>>>>> 20de75ad3062661e63c6d94b6a299ac9bb43f6c5
