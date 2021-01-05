@@ -15,8 +15,8 @@ function myFunction() {
     var elementTwo = document.getElementById("searcherTwo");
     elementTwo.classList.add("hide");
 
-    var elementThree = document.getElementById("resetResults")
-    elementThree.classList.remove("hide");
+    // var elementThree = document.getElementById("resetResults")
+    // elementThree.classList.remove("hide");
   
 };
 
@@ -46,7 +46,7 @@ function getWeatherInfo() {
     }if ((selectedValue=== "GA")) {
         city = ["Atlanta", "Augusta", "Columbus"];
     }if ((selectedValue=== "HI")) {
-        city = ["Honolulu", "East Honolulu", "Pearl City"];
+        city = ["Honolulu", "Kailua", "Pearl City"];
     }if ((selectedValue=== "ID")) {
         city = ["Boise", "Meridan", "Nampa"];
     }if ((selectedValue=== "IL")) {
