@@ -163,9 +163,35 @@ console.log(names[0]);
 
 $("#resetResults").on("click", function() {
     location.reload();
-})
+});
 
-$("#searchState").on("click", function () {
+function empty() {
+    var campOneEl = $("#campOne");
+    var campTwoEl = $("#campTwo");
+    var campThreeEl =$("#campThree");
+    var campFourEl =$("#campFour");
+    var campOneDescEl = $("#desOne");
+    var campTwoDescEl = $("#desTwo");
+    var campThreeDescEl = $("#desThree");
+    var campFourDescEl = $("#desFour");
+
+    campOneDescEl.empty();
+    campTwoDescEl.empty();
+    campThreeDescEl.empty();
+    campFourDescEl.empty();
+    campOneEl.empty();
+    campTwoEl.empty();
+    campThreeEl.empty(); 
+    campFourEl.empty();
+
+    var weatherEl = $("#weatherEl");
+    weatherEl.empty();
+
+};
+
+$("#list").on("change", function () {
+    empty();
+    getSelectedValue();
     var userText = $("textarea").val();
     var queryUrl =
         "https://developer.nps.gov/api/v1/campgrounds?stateCode=" + userText + "&api_key=PsnhlhXZuoOG7d4tp1e2PSphbmVmzt0nNtN4VgL8";
@@ -291,7 +317,7 @@ $("#searchState").on("click", function () {
         var favFour = $("#favFour");
 
 favOne.on("click", function() {
-    if (localStorage.getItem("name") === null && localStorage.getItem("description") === null) {
+    if (localStorage.getItem("name") === null && localStorage.getItem("description") === null && localStorage.getItem("name")) {
         localStorage.setItem("description", campsite01Description);
         localStorage.setItem("name", campsite01Name);
     }else if (localStorage.getItem("name") != null && localStorage.getItem("name2") === null && localStorage.getItem("description") != null && localStorage.getItem("description2") === null ) {
@@ -306,6 +332,14 @@ favOne.on("click", function() {
     };
 
 });
+
+// 
+// if name or name1 or name2 or name3 value === 
+
+// if any values in this array [name, name1, name2, name3] EXIST 
+// then I want to check "name" to see if it exactly matches ANY of those values
+
+
 
 favTwo.on("click", function() {
     if (localStorage.getItem("name") === null && localStorage.getItem("description") === null) {
@@ -441,4 +475,4 @@ favBtn.on("click", function() {
 //     var campOneName = $("#campOne").val();
 // console.log(campOneName);
 // localStorage.setItem("name", "hey");
-// });
+// })
