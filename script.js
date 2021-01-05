@@ -14,6 +14,9 @@ function myFunction() {
     // elementOne.classList.add("hide");  WHY DO I HAVE TO HIDE THIS FOR IT TO WORK. Searche
     var elementTwo = document.getElementById("searcherTwo");
     elementTwo.classList.add("hide");
+
+    var elementThree = document.getElementById("resetResults")
+    elementThree.classList.remove("hide");
   
 };
 
@@ -158,7 +161,9 @@ function getWeatherInfo() {
 console.log(names[0]);
 };
 
-
+$("#resetResults").on("click", function() {
+    location.reload();
+})
 
 $("#searchState").on("click", function () {
     var userText = $("textarea").val();
