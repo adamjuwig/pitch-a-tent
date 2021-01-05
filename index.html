@@ -136,7 +136,7 @@
                 class="material-icons right">more_vert</i></span>
             <div class="card-action" id="favOne">
               <a href="#myFavorites" class="white-text text-darken-4">Add to Favorites<i
-                  class="material-icons right saveFavorite">favorite_border</i> </a>
+                  class="material-icons right saveFavorite" id="favOnes">favorite_border</i> </a>
             </div>
           </div>
           <div class="card-reveal">
@@ -155,7 +155,7 @@
                 class="material-icons right">more_vert</i></span>
             <div class="card-action" id="favTwo">
               <a href="#myFavorites" class="white-text text-darken-4">Add to Favorites<i
-                  class="material-icons right saveFavorite">favorite_border</i> </a>
+                  class="material-icons right saveFavorite" id="favTwos">favorite_border</i> </a>
             </div>
           </div>
           <div class="card-reveal">
@@ -176,7 +176,7 @@
                 class="material-icons right">more_vert</i></span>
             <div class="card-action" id="favThree">
               <a href="#myFavorites" class="white-text text-darken-4">Add to Favorites<i
-                  class="material-icons right saveFavorite">favorite_border</i> </a>
+                  class="material-icons right saveFavorite" id="favThrees">favorite_border</i> </a>
             </div>
           </div>
           <div class="card-reveal">
@@ -194,7 +194,7 @@
                 class="material-icons right">more_vert</i></span>
             <div class="card-action" id="favFour">
               <a href="#myFavorites" class="white-text text-darken-4">Add to Favorites<i
-                  class="material-icons right saveFavorite">favorite_border</i> </a>
+                  class="material-icons right saveFavorite" id="favFours">favorite_border</i> </a>
             </div>
           </div>
           <div class="card-reveal">
@@ -251,8 +251,17 @@
     $('select').material_select();
   });
   
-  $('.saveFavorite').click(function() {
-    $(".saveFavorite").html('<i class="material-icons">favorite</i>');
+  $('#favOnes').click(function() {
+    $("#favOnes").html('<i class="material-icons">favorite</i>');
+  });
+  $('#favTwos').click(function() {
+    $("#favTwos").html('<i class="material-icons">favorite</i>');
+  });
+  $('#favThrees').click(function() {
+    $("favThrees").html('<i class="material-icons">favorite</i>');
+  });
+  $('#favFours').click(function() {
+    $("#favFours").html('<i class="material-icons">favorite</i>');
   });
   
   </script>
