@@ -10,14 +10,6 @@ function getSelectedValue() {
 function myFunction() {
     var element = document.getElementById("hidden");
     element.classList.remove("hide");
-    var elementOne = document.getElementById("searcherOne");
-    // elementOne.classList.add("hide");  WHY DO I HAVE TO HIDE THIS FOR IT TO WORK. Searche
-    var elementTwo = document.getElementById("searcherTwo");
-    elementTwo.classList.add("hide");
-
-    // var elementThree = document.getElementById("resetResults")
-    // elementThree.classList.remove("hide");
-  
 };
 
 function getWeatherInfo() {
@@ -129,41 +121,20 @@ function getWeatherInfo() {
         url: queryURL,
         method: "GET"
     }).then(function (response) {
-           console.log(response);
-           console.log(response.name);
-        var unixSunset = (response.sys.sunset);
-        var unixSunrise = (response.sys.sunrise);
-        var Sunrise = new Date(unixSunrise * 1000);
-        var sunset = new Date(unixSunset * 1000);
-        var selectedValue = $("#list").val();
-       
-        console.log(Sunrise);
-        console.log(sunset);
-       
+        // var unixSunset = (response.sys.sunset);
+        // var unixSunrise = (response.sys.sunrise);
+        // var Sunrise = new Date(unixSunrise * 1000);
+        // var sunset = new Date(unixSunset * 1000);
         var cityHigh = response.main.temp_max;
         var cityLow = response.main.temp_min
         var currentCity = response.name;
         names.push(currentCity);
-        // console.log(response.name);
-       
-        console.log(response.main.temp_max);
-        console.log("Hey I should print the same number as above: ", cityHigh)
-        console.log(response.weather[0].description);
-        console.log("Id of result: ", selectedValue)
         
         $(".cityHigh").append(currentCity + ": " + cityHigh.toFixed(0) + " " + "/" + " " + cityLow.toFixed(0) + " F " + "\n" + "<br>")
         
-        // $(".currentCity").append(currentCity);
-        // $(".cityTwoHigh").append(cityOneMainTemp)
-        // $(".cityThreeHigh").append(cityOneMainTemp)
     })
 }
-console.log(names[0]);
 };
-
-$("#resetResults").on("click", function() {
-    location.reload();
-});
 
 function empty() {
     var campOneEl = $("#campOne");
@@ -190,6 +161,10 @@ function empty() {
 };
 
 $("#list").on("change", function () {
+    $("#favOnes").html('<i class="material-icons">favorite_border</i>');
+    $("#favTwos").html('<i class="material-icons">favorite_border</i>');
+    $("#favThrees").html('<i class="material-icons">favorite_border</i>');
+    $("#favFours").html('<i class="material-icons">favorite_border</i>');
     empty();
     getSelectedValue();
     var userText = $("textarea").val();
@@ -204,26 +179,25 @@ $("#list").on("change", function () {
         for (let i = 0; i < response.data.length && i < 5; i++) {
             var campsite = response.data[i];
             var address = campsite.addresses
-            // var campsite01AddressLineOne = response.data[0].addresses[0].line1
-            // var campsite02AddressLineOne = response.data[1].addresses[0].line1
-            console.log("Hey I am response.data[i]: ", campsite)
+           
+            
             campsite01 = response.data[0]
             campsite01Name = response.data[0].name
-            console.log("01 Name: ", campsite01Name)
+            
             campsite02Name = response.data[1].name
-            console.log("02 Name: ", campsite02Name)
+           
             campsite03Name = response.data[2].name
-            console.log("03 Name: ", campsite03Name)
+            
             campsite04Name = response.data[3].name
-            console.log("04 Name: ", campsite04Name)
+           
             campsite01Description = response.data[0].description
-            console.log("One description: ", campsite01Description)
+            
             campsite02Description = response.data[1].description
-            console.log("Two description: ", campsite02Description)
+            
             campsite03Description = response.data[2].description
-            console.log("Three description: ", campsite03Description)
+            
             campsite04Description = response.data[3].description
-            console.log("Four description: ", campsite04Description)
+            
             
             // if (address && address.length > 0) {
             //     console.log("WHAT UP YO: ", campsite01AddressLineOne)
@@ -237,23 +211,14 @@ $("#list").on("change", function () {
             //     // $(".campsiteThreeAddress").append("No Data Available")
             // }
   
-
-            // var campsite01AddressLineOne = response.data[0].addresses[0].line1
-            // var campsite02AddressLineOne = response.data[1].addresses[0].line1
-            
-            // var campsite03AddressLineOne = response.data[2].addresses[0].line1
-
-            // console.log("Hey I am number one ADDRESS LINE ONE", campsite01AddressLineOne)
-
-            // var nameEl = $("<div>");
             
             var descriptionEL = $("<div>");
             descriptionEL.text(campsite.description);
-            var address = campsite.addresses;
-            var newDiv = $("<div>");
+            // var address = campsite.addresses;
+            // var newDiv = $("<div>");
             var campsiteName = $("<div>");
             campsiteName.text(campsite.name);
-            var campAddress = $("<div>");
+            // var campAddress = $("<div>");
            
             // newDiv.append(campsiteName);
             // newDiv.append(campAddress);
@@ -282,129 +247,100 @@ $("#list").on("change", function () {
         $(".campsiteDescriptionTwo").append(campsite02Description)
         $(".campsiteDescriptionThree").append(campsite03Description)
         $(".campsiteDescriptionFour").append(campsite04Description)
-        // $(".campsiteOneAddress").append(campsite01AddressLineOne)
-        // $(".campsiteTwoAddress").append(campsite02AddressLineOne)
-        // $(".campsiteThreeAddress").append(campsite01AddressLineOne)
-        // $(".weatherCity").append(campsite01Name)
-        // $(".campsiteTwoAddress").append(campsite01AddressLineOne)
-        // $(".campsiteThreeAddress").append(campsite03AddressLineOne)
-        // $(".campsiteFourAddress").append(campsite04AddressLineOne)
-        
-        console.log(response);
-      
-        // campsite name
-        //  console.log(response.data[0].name);
-        //  console.log(response.data[1].name);
-        //  console.log(response.data[2].name);
-        //  console.log(response.data[3].name);
-        //  console.log(response.data[4].name);
-        //  console.log(response.data[5].name);
-
-        // description
-        //  console.log(response.data[0].description);
-        //  console.log(response.data[1].description);
-        //  console.log(response.data[2].description);
-        //  console.log(response.data[3].description);
-        //  console.log(response.data[4].description);
-        //  console.log(response.data[5].description);
-        // for (let i = 0; i < response.data.length && i < 5; i++) {
-        //   var data = response.data[i];
-        //     console.log(data.name);
-        //   }
-        var favOne = $("#favOne");
-        var favTwo = $("#favTwo");
-        var favThree = $("#favThree");
-        var favFour = $("#favFour");
-
-favOne.on("click", function() {
-    if (localStorage.getItem("name") === null && localStorage.getItem("description") === null && localStorage.getItem("name")) {
-        localStorage.setItem("description", campsite01Description);
-        localStorage.setItem("name", campsite01Name);
-    }else if (localStorage.getItem("name") != null && localStorage.getItem("name2") === null && localStorage.getItem("description") != null && localStorage.getItem("description2") === null ) {
-        localStorage.setItem("description2", campsite01Description);
-        localStorage.setItem("name2", campsite01Name);
-    }else if (localStorage.getItem("name2") != null && localStorage.getItem("name3") === null && localStorage.getItem("description2") != null && localStorage.getItem("description3") === null) {
-        localStorage.setItem("description3", campsite01Description);
-        localStorage.setItem("name3", campsite01Name);
-    } else if (localStorage.getItem("name3") != null && localStorage.getItem("name4") === null && localStorage.getItem("description3") != null && localStorage.getItem("description4") === null) {
-        localStorage.setItem("description4", campsite01Description);
-        localStorage.setItem("name4", campsite01Name);
-    };
-
+       
+    }
+    );
 });
+    var favOne = $("#favOne");
+    var favTwo = $("#favTwo");
+    var favThree = $("#favThree");
+    var favFour = $("#favFour");
 
-// 
-// if name or name1 or name2 or name3 value === 
+    favOne.on("click", function() {
+        $("#favOnes").html('<i class="material-icons">favorite</i>');
+        if (localStorage.getItem("name") === null && localStorage.getItem("description") === null) {
+            localStorage.setItem("description", campsite01Description);
+            localStorage.setItem("name", campsite01Name);
+        }else if (localStorage.getItem("name") != null && localStorage.getItem("name2") === null && localStorage.getItem("description") != null && localStorage.getItem("description2") === null && localStorage.getItem("name") != campsite01Name) {
+            localStorage.setItem("description2", campsite01Description);
+            localStorage.setItem("name2", campsite01Name);
+        }else if (localStorage.getItem("name2") != null && localStorage.getItem("name3") === null && localStorage.getItem("description2") != null && localStorage.getItem("description3") === null && localStorage.getItem("name") != campsite01Name && localStorage.getItem("name2") != campsite01Name) {
+            localStorage.setItem("description3", campsite01Description);
+            localStorage.setItem("name3", campsite01Name);
+        } else if (localStorage.getItem("name3") != null && localStorage.getItem("name4") === null && localStorage.getItem("description3") != null && localStorage.getItem("description4") === null && localStorage.getItem("name") != campsite01Name && localStorage.getItem("name2") != campsite01Name && localStorage.getItem("name3") != campsite01Name) {
+            localStorage.setItem("description4", campsite01Description);
+            localStorage.setItem("name4", campsite01Name);
+        };
+    
+    });
+    
+    
+    favTwo.on("click", function() {
+        $("#favTwos").html('<i class="material-icons">favorite</i>');
+        if (localStorage.getItem("name") === null && localStorage.getItem("description") === null) {
+            localStorage.setItem("description", campsite02Description);
+            localStorage.setItem("name", campsite02Name);
+        }else if (localStorage.getItem("name") != null && localStorage.getItem("name2") === null && localStorage.getItem("description") != null && localStorage.getItem("description2") === null && localStorage.getItem("name") != campsite02Name ) {
+            localStorage.setItem("description2", campsite02Description);
+            localStorage.setItem("name2", campsite02Name);
+        }else if (localStorage.getItem("name2") != null && localStorage.getItem("name3") === null && localStorage.getItem("description2") != null && localStorage.getItem("description3") === null && localStorage.getItem("name") != campsite02Name && localStorage.getItem("name2") != campsite02Name) {
+            localStorage.setItem("description3", campsite02Description);
+            localStorage.setItem("name3", campsite02Name);
+        } else if (localStorage.getItem("name3") != null && localStorage.getItem("name4") === null && localStorage.getItem("description3") != null && localStorage.getItem("description4") === null && localStorage.getItem("name") != campsite02Name && localStorage.getItem("name2") != campsite02Name && localStorage.getItem("name3") != campsite02Name) {
+            localStorage.setItem("description4", campsite02Description);
+            localStorage.setItem("name4", campsite02Name);
+        };
+    
+    });
+    
+    favThree.on("click", function() {
+        $("#favThrees").html('<i class="material-icons">favorite</i>');
+        if (localStorage.getItem("name") === null && localStorage.getItem("description") === null) {
+            localStorage.setItem("description", campsite03Description);
+            localStorage.setItem("name", campsite03Name);
+        }else if (localStorage.getItem("name") != null && localStorage.getItem("name2") === null && localStorage.getItem("description") != null && localStorage.getItem("description2") === null && localStorage.getItem("name") != campsite03Name) {
+            localStorage.setItem("description2", campsite03Description);
+            localStorage.setItem("name2", campsite03Name);
+        }else if (localStorage.getItem("name2") != null && localStorage.getItem("name3") === null && localStorage.getItem("description2") != null && localStorage.getItem("description3") === null && localStorage.getItem("name") != campsite03Name && localStorage.getItem("name2") != campsite03Name) {
+            localStorage.setItem("description3", campsite03Description);
+            localStorage.setItem("name3", campsite03Name);
+        } else if (localStorage.getItem("name3") != null && localStorage.getItem("name4") === null && localStorage.getItem("description3") != null && localStorage.getItem("description4") === null && localStorage.getItem("name") != campsite03Name && localStorage.getItem("name2") != campsite03Name && localStorage.getItem("name3") != campsite03Name) {
+            localStorage.setItem("description4", campsite03Description);
+            localStorage.setItem("name4", campsite03Name);
+        };
+    
+    });
+    
+    favFour.on("click", function() {
+        $("#favFours").html('<i class="material-icons">favorite</i>');
+        if (localStorage.getItem("name") === null && localStorage.getItem("description") === null) {
+            localStorage.setItem("description", campsite04Description);
+            localStorage.setItem("name", campsite04Name);
+        }else if (localStorage.getItem("name") != null && localStorage.getItem("name2") === null && localStorage.getItem("description") != null && localStorage.getItem("description2") === null && localStorage.getItem("name") != campsite04Name) {
+            localStorage.setItem("description2", campsite04Description);
+            localStorage.setItem("name2", campsite04Name);
+        }else if (localStorage.getItem("name2") != null && localStorage.getItem("name3") === null && localStorage.getItem("description2") != null && localStorage.getItem("description3") === null && localStorage.getItem("name") != campsite04Name && localStorage.getItem("name2") != campsite04Name) {
+            localStorage.setItem("description3", campsite04Description);
+            localStorage.setItem("name3", campsite04Name);
+        } else if (localStorage.getItem("name3") != null && localStorage.getItem("name4") === null && localStorage.getItem("description3") != null && localStorage.getItem("description4") === null && localStorage.getItem("name") != campsite04Name && localStorage.getItem("name2") != campsite04Name && localStorage.getItem("name3") != campsite04Name) {
+            localStorage.setItem("description4", campsite04Description);
+            localStorage.setItem("name4", campsite04Name);
+        };
+    
+    });
 
-// if any values in this array [name, name1, name2, name3] EXIST 
-// then I want to check "name" to see if it exactly matches ANY of those values
-
-
-
-favTwo.on("click", function() {
-    if (localStorage.getItem("name") === null && localStorage.getItem("description") === null) {
-        localStorage.setItem("description", campsite02Description);
-        localStorage.setItem("name", campsite02Name);
-    }else if (localStorage.getItem("name") != null && localStorage.getItem("name2") === null && localStorage.getItem("description") != null && localStorage.getItem("description2") === null ) {
-        localStorage.setItem("description2", campsite02Description);
-        localStorage.setItem("name2", campsite02Name);
-    }else if (localStorage.getItem("name2") != null && localStorage.getItem("name3") === null && localStorage.getItem("description2") != null && localStorage.getItem("description3") === null) {
-        localStorage.setItem("description3", campsite02Description);
-        localStorage.setItem("name3", campsite02Name);
-    } else if (localStorage.getItem("name3") != null && localStorage.getItem("name4") === null && localStorage.getItem("description3") != null && localStorage.getItem("description4") === null) {
-        localStorage.setItem("description4", campsite02Description);
-        localStorage.setItem("name4", campsite02Name);
-    };
-
-});
-
-favThree.on("click", function() {
-    if (localStorage.getItem("name") === null && localStorage.getItem("description") === null) {
-        localStorage.setItem("description", campsite03Description);
-        localStorage.setItem("name", campsite03Name);
-    }else if (localStorage.getItem("name") != null && localStorage.getItem("name2") === null && localStorage.getItem("description") != null && localStorage.getItem("description2") === null) {
-        localStorage.setItem("description2", campsite03Description);
-        localStorage.setItem("name2", campsite03Name);
-    }else if (localStorage.getItem("name2") != null && localStorage.getItem("name3") === null && localStorage.getItem("description2") != null && localStorage.getItem("description3") === null) {
-        localStorage.setItem("description3", campsite03Description);
-        localStorage.setItem("name3", campsite03Name);
-    } else if (localStorage.getItem("name3") != null && localStorage.getItem("name4") === null && localStorage.getItem("description3") != null && localStorage.getItem("description4") === null) {
-        localStorage.setItem("description4", campsite03Description);
-        localStorage.setItem("name4", campsite03Name);
-    };
-
-});
-
-favFour.on("click", function() {
-    if (localStorage.getItem("name") === null && localStorage.getItem("description") === null) {
-        localStorage.setItem("description", campsite04Description);
-        localStorage.setItem("name", campsite04Name);
-    }else if (localStorage.getItem("name") != null && localStorage.getItem("name2") === null && localStorage.getItem("description") != null && localStorage.getItem("description2") === null) {
-        localStorage.setItem("description2", campsite04Description);
-        localStorage.setItem("name2", campsite04Name);
-    }else if (localStorage.getItem("name2") != null && localStorage.getItem("name3") === null && localStorage.getItem("description2") != null && localStorage.getItem("description3") === null) {
-        localStorage.setItem("description3", campsite04Description);
-        localStorage.setItem("name3", campsite04Name);
-    } else if (localStorage.getItem("name3") != null && localStorage.getItem("name4") === null && localStorage.getItem("description3") != null && localStorage.getItem("description4") === null) {
-        localStorage.setItem("description4", campsite04Description);
-        localStorage.setItem("name4", campsite04Name);
-    };
-
-});
-
-
-var favBtn = $("#favBtn");
+    var favBtn = $("#favBtn");
 favBtn.on("click", function() {
     if (localStorage.getItem("name") === null) {
         return;
     } else if(localStorage.getItem("name") != null && localStorage.getItem("name2") === null) {
-        console.log("hey");
         var campOneName = $("#campOne");
             campOneName.empty();
             campOneName.text(localStorage.getItem("name"));
         var campOneDescription = $("#desOne");
             campOneDescription.empty();
             campOneDescription.text(localStorage.getItem("description"));
+        $("#favOnes").html('<i class="material-icons">favorite</i>');
     } else if (localStorage.getItem("name2") != null && localStorage.getItem("name3") === null) {
         var campOneName = $("#campOne");
             campOneName.empty();
@@ -418,6 +354,8 @@ favBtn.on("click", function() {
         var campTwoDescription = $("#desTwo");
             campTwoDescription.empty();
             campTwoDescription.text(localStorage.getItem("description2"));
+        $("#favOnes").html('<i class="material-icons">favorite</i>');
+        $("#favTwos").html('<i class="material-icons">favorite</i>');
     } else if (localStorage.getItem("name3") != null && localStorage.getItem("name4") === null) {
         var campOneName = $("#campOne");
             campOneName.empty();
@@ -437,6 +375,9 @@ favBtn.on("click", function() {
         var campThreeDescription = $("#desThree");
             campThreeDescription.empty();
             campThreeDescription.text(localStorage.getItem("description3"));
+        $("#favOnes").html('<i class="material-icons">favorite</i>');
+        $("#favTwos").html('<i class="material-icons">favorite</i>');
+        $("#favThrees").html('<i class="material-icons">favorite</i>');
     }else if (localStorage.getItem("name4") != null) {
         var campOneName = $("#campOne");
             campOneName.empty();
@@ -462,17 +403,12 @@ favBtn.on("click", function() {
         var campFourDescription = $("#desFour");
             campFourDescription.empty();
             campFourDescription.text(localStorage.getItem("description4"));
+        $("#favOnes").html('<i class="material-icons">favorite</i>');
+        $("#favTwos").html('<i class="material-icons">favorite</i>');
+        $("#favThrees").html('<i class="material-icons">favorite</i>');
+        $("#favFours").html('<i class="material-icons">favorite</i>');
     };
 
 });
-    }
-    );
-});
 
-// var favOne = $("#favOne");
 
-// favOne.on("click", function() {
-//     var campOneName = $("#campOne").val();
-// console.log(campOneName);
-// localStorage.setItem("name", "hey");
-// })
