@@ -20,4 +20,4 @@ Project Requirements
 ### repository: https://github.com/adamjuwig/pitch-a-tent
 ### website: https://adamjuwig.github.io/pitch-a-tent/
 ### screen shots images: [!img pitch-a-tent/pitchsampleimages/
-### ![alt text](https://github.com/adamjuwig/pitch-a-tent/blob/main/pitchsampleimages/Sample01.png)
+### ![alt text](https://github.com/adamjuwig/pitch-a-tent/blob/main/pitchsampleimages/pitchdemo00.png)
