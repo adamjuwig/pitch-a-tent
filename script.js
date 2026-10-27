@@ -278,6 +278,12 @@ function setHeart(selector, filled) {
     $(selector).html('<i class="material-icons">' + (filled ? "favorite" : "favorite_border") + '</i>');
 }
 
+function openFavorites() {
+    if (!$("#favBtn").hasClass("active")) {
+        $("#favBtn").trigger("click");
+    }
+}
+
 function renderFavorites() {
     var body = $("#myFavorites .collapsible-body");
     var favorites = getFavorites();
@@ -311,6 +317,7 @@ campsites.forEach(function (site) {
             favorites = favorites.filter(function (fav) { return fav.name !== name; });
         } else {
             favorites.push({ name: name, description: site.description() });
+            openFavorites();
         }
         saveFavorites(favorites);
         setHeart(site.heart, isFavorite(name));
