@@ -24,9 +24,4 @@ Project Requirements
 
 ## Deployment
 
-The site is deployed on Netlify. API requests go through Netlify Functions in `netlify/functions/` so the keys are never sent to the browser. Set these environment variables in the Netlify site settings:
-
-- `NPS_API_KEY`: from https://www.nps.gov/subjects/developer/get-started.htm
-- `OPENWEATHER_API_KEY`: from https://openweathermap.org/api
-
-To run locally with the functions, use `netlify dev` (Netlify CLI) with the variables in a git-ignored `.env` file.
+The site is deployed on Netlify. 
