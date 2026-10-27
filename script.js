@@ -115,7 +115,7 @@ function getWeatherInfo() {
 
         cities = city[i];
 
-        var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cities + "&units=imperial&appid=a919f8d6ebff3b8cdcbc03c1604cfc21";
+        var queryURL = "/api/weather?q=" + encodeURIComponent(cities);
 
         $.ajax({
             url: queryURL,
@@ -169,7 +169,7 @@ $("#list").on("change", function () {
     getSelectedValue();
     var userText = $("textarea").val();
     var queryUrl =
-        "https://developer.nps.gov/api/v1/campgrounds?stateCode=" + userText + "&api_key=PsnhlhXZuoOG7d4tp1e2PSphbmVmzt0nNtN4VgL8";
+        "/api/nps?stateCode=" + userText;
     $.ajax({
         url: queryUrl,
         method: "GET",
